@@ -1,10 +1,15 @@
 
 $(document).on("click","button",function(){
 
-var message = $(this).closest(".panel").find("a").attr("href");
-var subject =$(this).closest(".panle").find("h2");
-window.plugins.socialsharing.share(message,'good subject' );// notice that this must be replace to subject !!
-  
+var message = $(this).closest(".popup").find("a").attr("href");
+
+
+var subject =$(this).closest(".popup").find("h2").html();
+
+
+window.plugins.socialsharing.share(message, subject);// notice that this must be replace to subject !!
+ 
+
 });
 //$(document).on("panelcreate", ".panel", function () {
        
@@ -35,6 +40,41 @@ $(document).on("pagecreate", "#page1", function () {
  //   $(".ui-li-divider").prepend(ic);
 
 //});
+
+$(function() {
+    $(window).scroll(function() {
+        if($(this).scrollTop() != 0) {
+            $('#toTop').fadeIn();    
+        } else {
+            $('#toTop').fadeOut();
+        }
+    });
+ 
+    $('#toTop').click(function() {
+        alert('nice');
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+    });    
+});
+
+$(document).ready(function () {
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+    });
+
+    $('.scrollup').click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+
+});
 
 
 
